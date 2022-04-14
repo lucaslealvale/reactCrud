@@ -6,26 +6,35 @@ import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import { CreateIntegration } from './StepperFiles/CreateIntegration';
+import {CreateIntegration} from './StepperFiles/CreateIntegration';
+import {Product} from './StepperFiles/Product';
+import {IntegrationType} from './StepperFiles/IntegrationType';
+import {Message} from './StepperFiles/Message';
+import {Setup} from './StepperFiles/Setup';
+import {Schema} from './StepperFiles/Schema';
+import {Confirmation} from './StepperFiles/Confirmation';
+import {Schedule} from './StepperFiles/Schedule';
+
 const steps = [
-  "Criar Integração",
-  "Produto",
   "Tipo de integração",
+  "Produto",
+  "Criar Integração",
   "Mensageria",
   "Agendamento",
   "Setup",
   "Schema",
   "Confirmação",
 ];
+
 const forms = [
+  <IntegrationType/>,
+  <Product/>,
   <CreateIntegration />,
-  // Product,
-  // IntegrationType,
-  // Message,
-  // Schedule,
-  // Setup,
-  // Schema,
-  // Confirmation,
+  <Message/>,
+  <Schedule/>,
+  <Setup/>,
+  <Schema/>,
+  <Confirmation/>
 ];
 
 
@@ -81,8 +90,8 @@ export default function HorizontalNonLinearStepper() {
 
   return (
     <Card sx={{ width: "50%", marginLeft: "10%", marginTop: "10%" }}>
-      <Typography sx={{ mt: 2, mb: 1 }}>Nova integração</Typography>
-      <Typography align="right" sx={{ mt: 2, mb: 1 }}>
+      <Typography sx={{ ml:1, mt: 2, mb: 1 }}>Nova integração</Typography>
+      <Typography align="right" sx={{ mt: 2, mb: 1, mr: 1 }}>
         Passo {activeStep + 1} de {totalSteps()}{" "}
       </Typography>
       <Box sx={{}}>
