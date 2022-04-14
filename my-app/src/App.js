@@ -17,6 +17,17 @@ const steps = [
   "Schema",
   "Confirmação",
 ];
+const forms = [
+  <CreateIntegration />,
+  // Product,
+  // IntegrationType,
+  // Message,
+  // Schedule,
+  // Setup,
+  // Schema,
+  // Confirmation,
+];
+
 
 export default function HorizontalNonLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -85,7 +96,7 @@ export default function HorizontalNonLinearStepper() {
           ))}
         </Stepper>
         <div>
-        <CreateIntegration />
+        {forms[activeStep]}
           {allStepsCompleted() ? (
             <React.Fragment>
               <Typography sx={{ mt: 2, mb: 1 }}>
