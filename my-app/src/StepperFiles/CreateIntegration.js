@@ -14,24 +14,64 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import * as React from "react";
 
-const products = [
+const registers = [
+ 
   {
-    value: "product1",
-    label: "produto 1",
+    value: "registers1",
+    label: "registradora 1",
   },
   {
-    value: "product2",
-    label: "produto 2",
+    value: "registers2",
+    label: "registradora 2",
   },
   {
-    value: "product3",
-    label: "produto 3",
+    value: "registers3",
+    label: "registradora 3",
   },
   {
-    value: "product4",
-    label: "produto 4",
+    value: "registers4",
+    label: "registradora 4",
   },
 ];
+const cryptos = [
+ 
+  {
+    value: "crypto1",
+    label: "Crypto 1",
+  },
+  {
+    value: "crypto2",
+    label: "Crypto 2",
+  },
+  {
+    value: "crypto3",
+    label: "Crypto 3",
+  },
+  {
+    value: "crypto4",
+    label: "Crypto 4",
+  },
+];
+const workers = [
+ 
+  {
+    value: "worker1",
+    label: "Worker 1",
+  },
+  {
+    value: "registers2",
+    label: "Worker 2",
+  },
+  {
+    value: "registers3",
+    label: "Worker 3",
+  },
+  {
+    value: "registers4",
+    label: "Worker 4",
+  },
+];
+
 
 export const CreateIntegration = (props) => (
   <CardContent>
@@ -43,72 +83,87 @@ export const CreateIntegration = (props) => (
       noValidate
       autoComplete="off"
     >
-      <TextField
-        required
-        id="outlined-required"
-        label="Nome da integração"
-        multiline
-        maxRows={4}
-      />
-      <TextField
-        size="large"
-        required
-        id="outlined-required"
-        label="Descrição"
-        multiline
-        rows={4}
-      />
-      <TextField
-        required
-        id="outlined-required"
-        label="Registradora"
-        multiline
-        maxRows={4}
-      />
-      <TextField
-        required
-        id="outlined-required"
-        label="Produto"
-        multiline
-        maxRows={4}
-      />
       <SelectTextFields />
+      <SelectTextFieldsWorker />
+      <SelectTextFieldsCrypto />
     </Box>
   </CardContent>
 );
 
-export default function SelectTextFields() {
-  const [product, setproduct] = React.useState("product1");
+export  function SelectTextFields() {
+  const [register, setRegister] = React.useState();
 
   const handleChange = (event) => {
-    setproduct(event.target.value);
+    setRegister(event.target.value);
   };
 
   return (
-    <Box
-      component="form"
-      sx={{
-        "& .MuiTextField-root": { m: 1, width: "25ch" },
-      }}
-      noValidate
-      autoComplete="off"
+    <TextField
+      id="outlined-select-register"
+      select
+      required
+      label="Registradoras"
+      value={register}
+      onChange={handleChange}
+      helperText="Please select your register"
     >
-      <div>
-        <TextField
-          id="outlined-select-product"
-          select
-          label="Select"
-          value={product}
-          onChange={handleChange}
-          helperText="Please select your product"
-        >
-          {products.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-      </div>
-    </Box>
+      {registers.map((option) => (
+        <MenuItem key={option.value} value={option.value}>
+          {option.label}
+        </MenuItem>
+      ))}
+    </TextField>
+  );
+}
+
+export  function SelectTextFieldsCrypto() {
+  const [crypto, setCrypto] = React.useState();
+
+  const handleChange = (event) => {
+    setCrypto(event.target.value);
+  };
+
+  return (
+    <TextField
+      id="outlined-select-Crypto"
+      select
+      required 
+      label="Cryptos"
+      value={crypto}
+      onChange={handleChange}
+      helperText="Please select your Crypto"
+    >
+      {cryptos.map((option) => (
+        <MenuItem key={option.value} value={option.value}>
+          {option.label}
+        </MenuItem>
+      ))}
+    </TextField>
+  );
+}
+
+export  function SelectTextFieldsWorker() {
+  const [worker, setWorker] = React.useState();
+
+  const handleChange = (event) => {
+    setWorker(event.target.value);
+  };
+
+  return (
+    <TextField
+      id="outlined-select-worker"
+      select
+      required 
+      label="Workers"
+      value={worker}
+      onChange={handleChange}
+      helperText="Please select your worker"
+    >
+      {workers.map((option) => (
+        <MenuItem key={option.value} value={option.value}>
+          {option.label}
+        </MenuItem>
+      ))}
+    </TextField>
   );
 }
